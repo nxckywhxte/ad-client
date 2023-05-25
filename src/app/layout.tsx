@@ -22,7 +22,7 @@ const RootLayout: FC<RootLayoutProps> = ({
   children,
 }) => {
   return (
-    <html lang='ru'>
+    <html lang='ru' suppressHydrationWarning>
       <body className={font.className}>
         <Providers>{children}</Providers>
       </body>

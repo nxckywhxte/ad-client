@@ -1,4 +1,5 @@
 import { Logo } from '@/components/base/logo/Logo'
+import { ThemeSwitch } from '@/components/base/theme/ThemeSwitch'
 
 export default function Home() {
   return (
@@ -9,6 +10,10 @@ export default function Home() {
         subtitle='Кафедра Автоматизации и ИТ'
         iconHeight={40}
         iconWidth={40}
+      />
+      <ThemeSwitch
+        iconWidth={30}
+        iconHeight={30}
       />
     </main>
   )
