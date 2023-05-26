@@ -8,6 +8,7 @@ import {
 import { Bars3BottomLeftIcon } from '@heroicons/react/24/outline'
 import { LinksDataProps } from '@/components/base/link-list/data/links.data'
 import Link from 'next/link'
+import { ThemeSwitch } from '@/components/base/theme/ThemeSwitch'
 
 export const MobileMenu = ({
   iconSize,
@@ -41,10 +42,16 @@ export const MobileMenu = ({
             leave='transition ease-in duration-75'
             leaveFrom='transform opacity-100 scale-100'
             leaveTo='transform opacity-0 scale-95'>
-            <Menu.Items className='absolute right-8 mt-1 flex w-96 origin-top-right flex-col items-start rounded-md bg-drCurrentLine'>
-              <div className='ml-8 mt-4 px-4 py-4'>
+            <Menu.Items className='absolute right-2 mt-1 flex w-80 origin-top-right flex-col items-start rounded-md bg-drCurrentLine'>
+              <div className='ml-8 mt-4 flex px-4 py-4'>
                 <Menu.Item>
-                  <h1>Навигация по сайту</h1>
+                  <div className='flex w-full items-center gap-4'>
+                    <h1>Навигация по сайту</h1>
+                    <ThemeSwitch
+                      iconWidth={30}
+                      iconHeight={30}
+                    />
+                  </div>
                 </Menu.Item>
               </div>
               <div className='ml-8 flex w-full flex-col items-start gap-2 px-4'>
