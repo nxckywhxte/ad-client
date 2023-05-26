@@ -1,10 +1,8 @@
 'use client'
 import { FC, useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-import {
-  MoonIcon,
-  SunIcon,
-} from '@heroicons/react/24/outline'
+import { SunIcon } from '@heroicons/react/24/outline'
+import { MoonIcon } from '@heroicons/react/24/solid'
 
 interface ThemeSwitchProps {
   iconWidth: number
@@ -28,6 +26,7 @@ export const ThemeSwitch: FC<
   return (
     <div>
       <button
+        className='flex items-center justify-center'
         onClick={() => {
           setTheme(
             theme === 'dark' ? 'light' : 'dark'

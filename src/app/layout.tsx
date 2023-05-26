@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { FC, ReactNode } from 'react'
 import { Providers } from '@/app/providers'
+import { BaseLayout } from '@/components/base/layout/BaseLayout'
 
 const font = Inter({
   subsets: ['cyrillic'],
@@ -24,7 +25,9 @@ const RootLayout: FC<RootLayoutProps> = ({
   return (
     <html lang='ru' suppressHydrationWarning>
       <body className={font.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <BaseLayout>{children}</BaseLayout>
+        </Providers>
       </body>
     </html>
   )
