@@ -29,7 +29,7 @@ export const LinksData: LinksDataProps[] = [
   {
     id: 2,
     title: 'Наша кафедра',
-    href: '/',
+    href: '/department',
     icon: (
       <BookOpenIcon
         width={iconSize}

@@ -1,5 +1,11 @@
-import { WelcomePage } from '@/components/pages/WelcomePage'
+import { HeroSection } from '@/components/sections/hero/HeroSection'
+import { BenefitsSection } from '@/components/sections/benefits/BenefitsSection'
 
-export default function Home() {
-  return <WelcomePage />
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <BenefitsSection />
+    </>
+  )
 }
