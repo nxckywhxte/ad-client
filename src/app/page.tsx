@@ -1,7 +1,5 @@
-import {WelcomePage} from '@/pages/WelcomePage'
+import { WelcomePage } from '@/components/pages/WelcomePage'
 
 export default function Home() {
-  return (
-    <WelcomePage/>
-  )
+  return <WelcomePage />
 }
