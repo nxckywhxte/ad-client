@@ -42,19 +42,19 @@ export const MobileMenu = ({
             leave='transition ease-in duration-75'
             leaveFrom='transform opacity-100 scale-100'
             leaveTo='transform opacity-0 scale-95'>
-            <Menu.Items className='absolute right-2 mt-1 flex w-80 origin-top-right flex-col items-start rounded-md bg-drCurrentLine'>
+            <Menu.Items className='absolute right-2 mt-1 flex w-[350px] origin-top-right flex-col items-start rounded-md bg-drForeground shadow-2xl dark:bg-drCurrentLine'>
               <div className='ml-8 mt-4 flex px-4 py-4'>
                 <Menu.Item>
-                  <div className='flex w-full items-center gap-4'>
+                  <div className='flex items-center gap-4'>
                     <h1>Навигация по сайту</h1>
                     <ThemeSwitch
-                      iconWidth={30}
-                      iconHeight={30}
+                      iconWidth={25}
+                      iconHeight={25}
                     />
                   </div>
                 </Menu.Item>
               </div>
-              <div className='ml-8 flex w-full flex-col items-start gap-2 px-4'>
+              <div className='ml-8 flex flex-col items-start gap-2 px-4'>
                 {centerLinks.map(link => (
                   <Menu.Item key={link.id}>
                     <Link
@@ -71,7 +71,7 @@ export const MobileMenu = ({
                   <h1>Полезные ссылки</h1>
                 </Menu.Item>
               </div>
-              <div className='mb-8 ml-8 flex w-full flex-col items-start gap-2 px-4'>
+              <div className='mb-8 ml-8 flex flex-col items-start gap-2 px-4'>
                 {extendLinks.map(link => (
                   <Menu.Item key={link.id}>
                     <Link

@@ -1,5 +1,6 @@
 import type { FC, PropsWithChildren } from 'react'
 import { BaseNavigationBar } from '@/components/base/base-navigation-bar/BaseNavigationBar'
+import { Footer } from '@/components/base/footer/Footer'
 
 export const BaseLayout: FC<
   PropsWithChildren
@@ -10,6 +11,7 @@ export const BaseLayout: FC<
       <main className='container mx-auto flex flex-1 flex-col py-4'>
         {children}
       </main>
+      <Footer />
     </div>
   )
 }
