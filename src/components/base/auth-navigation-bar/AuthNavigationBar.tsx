@@ -1,13 +1,12 @@
 import { Logo } from '@/components/base/logo/Logo'
+import { LinksData } from '@/components/base/link-list/data/links.data'
+import { Group } from '@/components/base/group/Group'
 import { ThemeSwitch } from '@/components/base/theme/ThemeSwitch'
 import { Button } from '@/components/base/button/Button'
-import { Group } from '@/components/base/group/Group'
-import { LinkList } from '@/components/base/link-list/LinkList'
-import { LinksData } from '@/components/base/link-list/data/links.data'
 import { MobileMenu } from '@/components/base/mobile-menu/MobileMenu'
 import { ExtendLinksData } from '@/components/data/ExtendLinks'
 
-export const BaseNavigationBar = () => {
+export const AuthNavigationBar = () => {
   return (
     <nav className='flex w-full items-center justify-between px-4 py-3 shadow-md'>
       <Logo
@@ -16,15 +15,12 @@ export const BaseNavigationBar = () => {
         iconHeight={40}
         iconWidth={40}
       />
-      <LinkList data={LinksData} />
       <Group>
         <ThemeSwitch
           iconWidth={30}
           iconHeight={30}
         />
-        <Button
-          href={'/auth'}
-          variant={'primary'}>
+        <Button variant={'primary'} href='/auth'>
           Авторизация
         </Button>
       </Group>

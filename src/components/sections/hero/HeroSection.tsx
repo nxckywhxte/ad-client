@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const HeroSection = () => {
   return (
@@ -37,12 +38,16 @@ export const HeroSection = () => {
             </span>
           </div>
           <div className='mt-4 flex flex-col items-center gap-4 text-lg text-drForeground md:flex-row'>
-            <button className='rounded-md bg-drComment px-4 py-3'>
+            <Link
+              href='/auth'
+              className='rounded-md bg-drComment px-4 py-3'>
               Присоединиться
-            </button>
-            <button className='rounded-md bg-drCurrentLine px-4 py-3'>
+            </Link>
+            <Link
+              href='/auth'
+              className='rounded-md bg-drCurrentLine px-4 py-3'>
               Свзяь с аднимистрацией
-            </button>
+            </Link>
           </div>
         </div>
       </div>
