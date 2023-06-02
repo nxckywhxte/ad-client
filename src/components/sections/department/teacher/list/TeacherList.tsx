@@ -10,7 +10,6 @@ export const TeacherList = () => {
           imageUrl={teacher.imageUrl}
           fullName={teacher.fullName}
           position={teacher.position}
-          shortInfo={teacher.shortInfo}
         />
       ))}
     </div>
