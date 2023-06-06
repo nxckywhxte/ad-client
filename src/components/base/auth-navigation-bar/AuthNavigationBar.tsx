@@ -2,9 +2,9 @@ import { Logo } from '@/components/base/logo/Logo'
 import { LinksData } from '@/components/base/link-list/data/links.data'
 import { Group } from '@/components/base/group/Group'
 import { ThemeSwitch } from '@/components/base/theme/ThemeSwitch'
-import { Button } from '@/components/base/button/Button'
 import { MobileMenu } from '@/components/base/mobile-menu/MobileMenu'
 import { ExtendLinksData } from '@/components/data/ExtendLinks'
+import { LinkList } from '@/components/base/link-list/LinkList'
 
 export const AuthNavigationBar = () => {
   return (
@@ -15,14 +15,12 @@ export const AuthNavigationBar = () => {
         iconHeight={40}
         iconWidth={40}
       />
+      <LinkList data={LinksData} />
       <Group>
         <ThemeSwitch
           iconWidth={30}
           iconHeight={30}
         />
-        <Button variant={'primary'} href='/auth'>
-          Авторизация
-        </Button>
       </Group>
       <MobileMenu
         iconSize={30}

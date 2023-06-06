@@ -14,7 +14,7 @@ export interface LinksDataProps {
 }
 
 let iconSize = 20
-export const LinksData: LinksDataProps[] = [
+export const authLinksData: LinksDataProps[] = [
   {
     id: 1,
     title: 'Главная',
@@ -40,7 +40,7 @@ export const LinksData: LinksDataProps[] = [
   {
     id: 3,
     title: 'Каталог',
-    href: '/',
+    href: '/catalog',
     icon: (
       <RectangleStackIcon
         width={iconSize}
@@ -51,7 +51,7 @@ export const LinksData: LinksDataProps[] = [
   {
     id: 4,
     title: 'Панель управления',
-    href: '/',
+    href: '/dashboard',
     icon: (
       <ComputerDesktopIcon
         width={iconSize}
@@ -60,3 +60,41 @@ export const LinksData: LinksDataProps[] = [
     ),
   },
 ]
+
+// export const unauthLinksData: LinksDataProps[] = [
+//   {
+//     id: 1,
+//     title: 'Главная',
+//     href: '/',
+//     icon: (
+//       <HomeIcon
+//         width={iconSize}
+//         height={iconSize}
+//       />
+//     ),
+//   },
+//   {
+//     id: 2,
+//     title: 'Наша кафедра',
+//     href: '/department',
+//     icon: (
+//       <BookOpenIcon
+//         width={iconSize}
+//         height={iconSize}
+//       />
+//     ),
+//   },
+//   {
+//     id: 3,
+//     title: 'Каталог',
+//     href: '/catalog',
+//     icon: (
+//       <RectangleStackIcon
+//         width={iconSize}
+//         height={iconSize}
+//       />
+//     ),
+//   },
+// ]
+export const unauthLinksData =
+  authLinksData.slice(0, authLinksData.length - 1)

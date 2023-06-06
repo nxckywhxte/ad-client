@@ -1,3 +1,5 @@
+'use client'
+
 import { LinksDataProps } from '@/components/base/link-list/data/links.data'
 import Link from 'next/link'
 

@@ -9,6 +9,12 @@ import { Bars3BottomLeftIcon } from '@heroicons/react/24/outline'
 import { LinksDataProps } from '@/components/base/link-list/data/links.data'
 import Link from 'next/link'
 import { ThemeSwitch } from '@/components/base/theme/ThemeSwitch'
+import {
+  signIn,
+  signOut,
+  useSession,
+} from 'next-auth/react'
+import { Button } from '@/components/base/button/Button'
 
 export const MobileMenu = ({
   iconSize,
@@ -19,6 +25,8 @@ export const MobileMenu = ({
   centerLinks: LinksDataProps[]
   extendLinks: LinksDataProps[]
 }) => {
+  const { data: session } = useSession()
+
   return (
     <>
       <div className='sm:hidden'>
@@ -82,6 +90,23 @@ export const MobileMenu = ({
                     </Link>
                   </Menu.Item>
                 ))}
+              </div>
+              <div className='mb-8 ml-8 flex flex-col items-start gap-2 px-4'>
+                <Menu.Item>
+                  {session ? (
+                    <Button
+                      variant={'primary'}
+                      onClick={() => signOut()}>
+                      Выйти из системы
+                    </Button>
+                  ) : (
+                    <Button
+                      variant={'primary'}
+                      onClick={() => signIn()}>
+                      Авторизация
+                    </Button>
+                  )}
+                </Menu.Item>
               </div>
             </Menu.Items>
           </Transition>

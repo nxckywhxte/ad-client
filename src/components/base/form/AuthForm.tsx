@@ -1,3 +1,5 @@
+'use client'
+
 import { useForm } from 'react-hook-form'
 import {
   AuthFormType,
@@ -5,6 +7,7 @@ import {
 } from './auth-form.interface'
 import { useState } from 'react'
 import { AuthRoleSelect } from '@/components/base/input/FormRoleSelect'
+import { signIn } from 'next-auth/react'
 
 export const AuthForm = () => {
   const {
@@ -171,7 +174,13 @@ export const AuthForm = () => {
         </button>
       </div>
       <div>
-        <button className='mt-10 rounded-md bg-drComment px-4 py-2 text-drForeground'>
+        <button
+          className='mt-10 rounded-md bg-drComment px-4 py-2 text-drForeground'
+          onClick={() => {
+            formType === 'login'
+              ? signIn('credentials')
+              : null
+          }}>
           {formType === 'register'
             ? 'Регистрация'
             : 'Авторизация'}
