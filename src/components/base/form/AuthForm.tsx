@@ -7,58 +7,54 @@ import {
 } from './auth-form.interface'
 import { useState } from 'react'
 import { AuthRoleSelect } from '@/components/base/input/FormRoleSelect'
-import { NextResponse } from 'next/server'
-import { SERVER_BASE_URL } from '@/utils/api'
+import { handleRegisterUser } from '@/utils/functions/register'
+import { handleLoginUser } from '@/utils/functions/login'
 
 export const AuthForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
     defaultValues: {
       email: '',
       username: '',
-      password: '',
+      rawPassword: '',
       roleName: '',
     },
   })
+  const [loading, setLoading] = useState(false)
 
   const [formType, setFormType] =
-    useState<AuthFormType>('login')
+    useState<AuthFormType>('register')
 
-  const onLoginSubmit = handleSubmit(data => {
-    const { username, password } = data
-    fetch(`${SERVER_BASE_URL}/auth/login`, {
-      body: JSON.stringify({
-        username: username,
-        rawPassword: password,
-      }),
-    }).then(r => {
-      const data = r.json()
-      NextResponse.json(data)
-    })
-  })
+  const onLoginSubmit = handleSubmit(
+    async (data, form) => {
+      setLoading(true)
+      await handleLoginUser({
+        username: data.username,
+        rawPassword: data.rawPassword,
+      })
+      reset()
+      setLoading(false)
+    }
+  )
 
-  const onRegisterSubmit = handleSubmit(data => {
-    const {
-      username,
-      password,
-      roleName,
-      email,
-    } = data
-    fetch(`${SERVER_BASE_URL}/auth/register`, {
-      body: JSON.stringify({
-        username: username,
-        rawPassword: password,
-        roleName: roleName,
-        email: email,
-      }),
-    }).then(r => {
-      const data = r.json()
-      NextResponse.json(data)
-    })
-  })
+  const onRegisterSubmit = handleSubmit(
+    async data => {
+      setLoading(true)
+      await handleRegisterUser({
+        username: data.username,
+        email: data.email,
+        roleName: data.roleName,
+        rawPassword: data.rawPassword,
+      })
+      reset()
+      setLoading(false)
+      setFormType('login')
+    }
+  )
 
   return (
     <form
@@ -82,7 +78,9 @@ export const AuthForm = () => {
             }
           />
           {errors.email?.type === 'required' && (
-            <p role='alert'>
+            <p
+              role='alert'
+              className='text-sm text-drRed'>
               Обязательный параметр
             </p>
           )}
@@ -104,26 +102,34 @@ export const AuthForm = () => {
           }
         />
         {errors.username?.type === 'required' && (
-          <p role='alert'>
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Обязательный параметр
           </p>
         )}
         {errors.username?.type === 'pattern' && (
-          <p role='alert'>
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Никнейм должен содержать следующие
             символы: [a-z0-9]
           </p>
         )}
         {errors.username?.type ===
           'minLength' && (
-          <p role='alert'>
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Никнейм должен содержать более 8
             символов
           </p>
         )}
         {errors.username?.type ===
           'maxLength' && (
-          <p role='alert'>
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Никнейм должен содержать не более 12
             символов
           </p>
@@ -132,7 +138,7 @@ export const AuthForm = () => {
       <div className='mb-3 flex flex-col gap-2'>
         <label>Пароль:</label>
         <input
-          {...register('password', {
+          {...register('rawPassword', {
             required: true,
             minLength: 8,
             maxLength: 16,
@@ -142,31 +148,41 @@ export const AuthForm = () => {
           className='rounded-md border px-4 py-2 text-sm font-light shadow-xl dark:border-drCurrentLine dark:bg-drBackground dark:text-drForeground'
           type='password'
           aria-invalid={
-            errors.password ? 'true' : 'false'
+            errors.rawPassword ? 'true' : 'false'
           }
         />
-        {errors.password?.type === 'required' && (
-          <p role='alert'>
+        {errors.rawPassword?.type ===
+          'required' && (
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Обязательный параметр
           </p>
         )}
-        {errors.password?.type === 'pattern' && (
-          <p role='alert'>
+        {errors.rawPassword?.type ===
+          'pattern' && (
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Пароль должен содержать минимум один
             заглавный, один строчный, один
             специальный символ: [@$!%*#?&]
           </p>
         )}
-        {errors.password?.type ===
+        {errors.rawPassword?.type ===
           'minLength' && (
-          <p role='alert'>
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Пароль должен содержать более 8
             символов
           </p>
         )}
-        {errors.password?.type ===
+        {errors.rawPassword?.type ===
           'maxLength' && (
-          <p role='alert'>
+          <p
+            role='alert'
+            className='text-sm text-drRed'>
             Пароль должен содержать не более 16
             символов
           </p>
@@ -201,6 +217,7 @@ export const AuthForm = () => {
       <div>
         <button
           type='submit'
+          disabled={loading}
           className='mt-10 rounded-md bg-drComment px-4 py-2 text-drForeground'>
           {formType === 'register'
             ? 'Регистрация'
