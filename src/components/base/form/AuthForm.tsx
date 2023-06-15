@@ -7,6 +7,8 @@ import {
 } from './auth-form.interface'
 import { useState } from 'react'
 import { AuthRoleSelect } from '@/components/base/input/FormRoleSelect'
+import { NextResponse } from 'next/server'
+import { SERVER_BASE_URL } from '@/utils/api'
 
 export const AuthForm = () => {
   const {
@@ -27,12 +29,36 @@ export const AuthForm = () => {
 
   const onLoginSubmit = handleSubmit(data => {
     const { username, password } = data
-    console.log({ username, password })
+    fetch(`${SERVER_BASE_URL}/auth/login`, {
+      body: JSON.stringify({
+        username: username,
+        rawPassword: password,
+      }),
+    }).then(r => {
+      const data = r.json()
+      NextResponse.json(data)
+    })
   })
 
-  const onRegisterSubmit = handleSubmit(data =>
-    console.log(data)
-  )
+  const onRegisterSubmit = handleSubmit(data => {
+    const {
+      username,
+      password,
+      roleName,
+      email,
+    } = data
+    fetch(`${SERVER_BASE_URL}/auth/register`, {
+      body: JSON.stringify({
+        username: username,
+        rawPassword: password,
+        roleName: roleName,
+        email: email,
+      }),
+    }).then(r => {
+      const data = r.json()
+      NextResponse.json(data)
+    })
+  })
 
   return (
     <form
@@ -174,8 +200,8 @@ export const AuthForm = () => {
       </div>
       <div>
         <button
-          className='mt-10 rounded-md bg-drComment px-4 py-2 text-drForeground'
-          >
+          type='submit'
+          className='mt-10 rounded-md bg-drComment px-4 py-2 text-drForeground'>
           {formType === 'register'
             ? 'Регистрация'
             : 'Авторизация'}

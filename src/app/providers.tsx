@@ -2,7 +2,6 @@
 
 import { FC, PropsWithChildren } from 'react'
 import { ThemeProvider } from 'next-themes'
-import { SessionProvider } from 'next-auth/react'
 
 export const Providers: FC<PropsWithChildren> = ({
   children,
@@ -11,9 +10,7 @@ export const Providers: FC<PropsWithChildren> = ({
     <ThemeProvider
       attribute='class'
       defaultTheme='dark'>
-      <SessionProvider>
-        {children}
-      </SessionProvider>
+      {children}
     </ThemeProvider>
   )
 }
