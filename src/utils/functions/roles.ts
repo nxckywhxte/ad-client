@@ -1,5 +1,4 @@
 import { SERVER_BASE_URL } from '@/utils/api'
-import { NextResponse } from 'next/server'
 
 export const getRoles = async () => {
   const res = await fetch(

@@ -43,7 +43,6 @@ export const AuthForm = () => {
       })
       reset()
       setLoading(false)
-      redirect('/', RedirectType.push)
     }
   )
 
