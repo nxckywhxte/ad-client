@@ -5,10 +5,14 @@ import {
   AuthFormType,
   FormData,
 } from './auth-form.interface'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AuthRoleSelect } from '@/components/base/input/FormRoleSelect'
 import { handleRegisterUser } from '@/utils/functions/register'
 import { handleLoginUser } from '@/utils/functions/login'
+import { redirect } from 'next/navigation'
+import { RedirectType } from 'next/dist/client/components/redirect'
+import { UserRole } from '@/utils/types'
+import { getRoles } from '@/utils/functions/roles'
 
 export const AuthForm = () => {
   const {
@@ -25,12 +29,13 @@ export const AuthForm = () => {
     },
   })
   const [loading, setLoading] = useState(false)
-
   const [formType, setFormType] =
     useState<AuthFormType>('register')
+  const [existRoles, setExistRoles] =
+    useState<UserRole[]>()
 
   const onLoginSubmit = handleSubmit(
-    async (data, form) => {
+    async data => {
       setLoading(true)
       await handleLoginUser({
         username: data.username,
@@ -38,8 +43,19 @@ export const AuthForm = () => {
       })
       reset()
       setLoading(false)
+      redirect('/', RedirectType.push)
     }
   )
+
+  useEffect(() => {
+    const fetchRoles = async () => {
+      const roles: UserRole[] = await getRoles()
+      const updatedRoles = roles.slice(1)
+      setExistRoles(updatedRoles)
+    }
+
+    fetchRoles().catch(console.error)
+  })
 
   const onRegisterSubmit = handleSubmit(
     async data => {
@@ -191,6 +207,7 @@ export const AuthForm = () => {
       {formType === 'register' ? (
         <div>
           <AuthRoleSelect
+            roleData={existRoles}
             label='Выберите роль:'
             {...register('roleName')}
           />
