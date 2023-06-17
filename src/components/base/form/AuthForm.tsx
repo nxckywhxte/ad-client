@@ -9,8 +9,6 @@ import { useEffect, useState } from 'react'
 import { AuthRoleSelect } from '@/components/base/input/FormRoleSelect'
 import { handleRegisterUser } from '@/utils/functions/register'
 import { handleLoginUser } from '@/utils/functions/login'
-import { redirect } from 'next/navigation'
-import { RedirectType } from 'next/dist/client/components/redirect'
 import { UserRole } from '@/utils/types'
 import { getRoles } from '@/utils/functions/roles'
 
