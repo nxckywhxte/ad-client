@@ -11,6 +11,7 @@ import { handleRegisterUser } from '@/utils/functions/register'
 import { handleLoginUser } from '@/utils/functions/login'
 import { UserRole } from '@/utils/types'
 import { getRoles } from '@/utils/functions/roles'
+import { useRouter } from 'next/navigation'
 
 export const AuthForm = () => {
   const {
@@ -26,6 +27,7 @@ export const AuthForm = () => {
       roleName: '',
     },
   })
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [formType, setFormType] =
     useState<AuthFormType>('register')
@@ -41,6 +43,7 @@ export const AuthForm = () => {
       })
       reset()
       setLoading(false)
+      await router.push('/')
     }
   )
 

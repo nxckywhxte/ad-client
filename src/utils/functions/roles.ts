@@ -1,4 +1,5 @@
 import { SERVER_BASE_URL } from '@/utils/api'
+import toast from 'react-hot-toast'
 
 export const getRoles = async () => {
   const res = await fetch(
@@ -11,7 +12,7 @@ export const getRoles = async () => {
     }
   )
   if (!res.ok) {
-    throw new Error('Ошибка получения ролей')
+    toast.error('Ошибка при получении ролей!')
   }
   return res.json()
 }

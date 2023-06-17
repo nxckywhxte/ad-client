@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { FC, ReactNode } from 'react'
 import { Providers } from '@/app/providers'
+import { Toaster } from 'react-hot-toast'
 
 const font = Inter({
   subsets: ['cyrillic'],
@@ -24,6 +25,7 @@ const RootLayout: FC<RootLayoutProps> = ({
   return (
     <html lang='ru' suppressHydrationWarning>
       <body className={font.className}>
+        <Toaster />
         <Providers>{children}</Providers>
       </body>
     </html>

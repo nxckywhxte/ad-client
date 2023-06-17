@@ -1,11 +1,12 @@
 import { SERVER_BASE_URL } from '@/utils/api'
 import { NextResponse } from 'next/server'
 import { RegisterUserDto } from '@/utils/dto/register-user.dto'
+import toast from 'react-hot-toast'
 
 export const handleRegisterUser = async (
   registerUserDto: RegisterUserDto
 ) => {
-  await fetch(
+  const res = await fetch(
     `${SERVER_BASE_URL}/auth/register`,
     {
       method: 'POST',
@@ -20,11 +21,9 @@ export const handleRegisterUser = async (
       },
     }
   )
-    .then(async r => {
-      const data = await r.json()
-      NextResponse.json(data)
-    })
-    .catch(e => {
-      console.log(e)
-    })
+  if (!res.ok) {
+    toast.error('Ошибка при регистрации!')
+  }
+  toast.success('Регистрация прошла успешно!')
+  return res.json()
 }
