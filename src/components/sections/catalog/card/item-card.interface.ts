@@ -1,4 +1,5 @@
 export interface ItemCardInterface {
-  imageUrl: string
   title: string
+  imageUrl: string
+  images: string[]
 }

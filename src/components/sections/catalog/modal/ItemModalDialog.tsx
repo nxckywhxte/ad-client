@@ -1,5 +1,5 @@
 import { Dialog } from '@headlessui/react'
-import Image from 'next/image'
+import { ImageSlider } from '@/components/sections/catalog/slider/ImageSlider'
 
 export const ItemModalDialog = ({
   isOpen,
@@ -12,13 +12,8 @@ export const ItemModalDialog = ({
       onClose={() => setIsOpen(false)}>
       <div className='fixed bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-black bg-opacity-75'>
         <Dialog.Panel className='flex w-3/4 flex-row items-start rounded bg-drForeground p-8 dark:bg-drBackground'>
-          <Image
-            className='mr-6 h-80 shrink-0 grow-0 rounded-md object-cover object-center'
-            width={400}
-            height={400}
-            src={item.imageUrl}
-            alt='content'
-          />
+          <ImageSlider
+            images={item.images}></ImageSlider>
           <div className='relative shrink grow self-stretch'>
             <Dialog.Title className='text-xl'>
               {item.title}
