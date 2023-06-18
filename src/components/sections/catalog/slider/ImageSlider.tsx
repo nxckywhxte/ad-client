@@ -15,7 +15,6 @@ export const ImageSlider = ({ images }) => {
       ? images.length - 1
       : currentIndex - 1
     setCurrentIndex(newIndex)
-    console.log(currentIndex)
   }
 
   const nextSlide = () => {
@@ -25,7 +24,6 @@ export const ImageSlider = ({ images }) => {
       ? 0
       : currentIndex + 1
     setCurrentIndex(newIndex)
-    console.log(currentIndex)
   }
 
   const goToSlide = slideIndex => {
