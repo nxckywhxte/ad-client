@@ -3,7 +3,7 @@ import { ItemCardInterface } from '@/components/sections/catalog/card/item-card.
 export const itemCardData: ItemCardInterface[] = [
   {
     imageUrl: '/cat1.jpg',
-    title: 'Кошька в самбреро',
+    title: 'Кошька в сомбреро',
     images: [
       '/cat1.jpg',
       '/cat2.jpg',
@@ -48,7 +48,7 @@ export const itemCardData: ItemCardInterface[] = [
   },
   {
     imageUrl: '/cat1.jpg',
-    title: 'Кошька в самбреро',
+    title: 'Кошька в сомбреро',
     images: [
       '/cat1.jpg',
       '/cat2.jpg',
