@@ -39,11 +39,20 @@ export const ItemModalDialog = ({
               </button>
             </div>
           </div>
-          <button
-            className="shrink-0 grow-0 bg-[url('/close-btn.svg')]"
-            onClick={() => setIsOpen(false)}>
-            Закрыть
-          </button>
+          <svg
+            onClick={() => setIsOpen(false)}
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 20 20'
+            strokeWidth={1.5}
+            stroke='currentColor'
+            className='h-6 w-6 hover:cursor-pointer'>
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M6 18L18 6M6 6l12 12'
+            />
+          </svg>
         </Dialog.Panel>
       </div>
     </Dialog>
