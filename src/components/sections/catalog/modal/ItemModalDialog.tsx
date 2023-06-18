@@ -1,5 +1,6 @@
 import { Dialog } from '@headlessui/react'
 import { ImageSlider } from '@/components/sections/catalog/slider/ImageSlider'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 
 export const ItemModalDialog = ({
   isOpen,
@@ -34,20 +35,10 @@ export const ItemModalDialog = ({
               </button>
             </div>
           </div>
-          <svg
+          <XMarkIcon
+            className='current-color h-6 w-6 hover:cursor-pointer'
             onClick={() => setIsOpen(false)}
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 20 20'
-            strokeWidth={1.5}
-            stroke='currentColor'
-            className='h-6 w-6 hover:cursor-pointer'>
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M6 18L18 6M6 6l12 12'
-            />
-          </svg>
+          />
         </Dialog.Panel>
       </div>
     </Dialog>
