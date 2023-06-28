@@ -14,5 +14,5 @@ export const defaultAuthFormValues: IAuthForm = {
   gender: Gender.male,
   birthday: new Date(),
   phoneNumber: '',
-  avatarFile: new FileList(),
+  avatarFile: null,
 }
