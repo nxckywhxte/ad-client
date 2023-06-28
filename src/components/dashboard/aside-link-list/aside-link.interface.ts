@@ -5,9 +5,4 @@ export interface AsideLinkInterface {
   href: string
   title: string
   icon?: ReactNode
-  role: AsideLinkRoleInterface[]
-}
-
-export interface AsideLinkRoleInterface {
-  roleName: string | undefined
 }

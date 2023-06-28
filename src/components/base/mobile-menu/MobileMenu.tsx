@@ -1,15 +1,14 @@
 'use client'
 
 import { Fragment } from 'react'
-import {
-  Menu,
-  Transition,
-} from '@headlessui/react'
+import { Menu, Transition } from '@headlessui/react'
 import { Bars3BottomLeftIcon } from '@heroicons/react/24/outline'
 import { LinksDataProps } from '@/components/base/link-list/data/links.data'
 import Link from 'next/link'
 import { ThemeSwitch } from '@/components/base/theme/ThemeSwitch'
 import { Button } from '@/components/base/button/Button'
+import { useAuthStore } from '@/store/auth'
+import Image from 'next/image'
 
 export const MobileMenu = ({
   iconSize,
@@ -20,12 +19,13 @@ export const MobileMenu = ({
   centerLinks: LinksDataProps[]
   extendLinks: LinksDataProps[]
 }) => {
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated)
+  const userData = useAuthStore(state => state.userData)
+
   return (
     <>
       <div className='sm:hidden'>
-        <Menu
-          as='div'
-          className='relative inline-block'>
+        <Menu as='div' className='relative inline-block'>
           <div>
             <Menu.Button className='flex items-center justify-center px-2 py-2'>
               <Bars3BottomLeftIcon
@@ -48,10 +48,7 @@ export const MobileMenu = ({
                 <Menu.Item>
                   <div className='flex items-center gap-4'>
                     <h1>Навигация по сайту</h1>
-                    <ThemeSwitch
-                      iconWidth={25}
-                      iconHeight={25}
-                    />
+                    <ThemeSwitch iconWidth={25} iconHeight={25} />
                   </div>
                 </Menu.Item>
               </div>
@@ -86,13 +83,38 @@ export const MobileMenu = ({
               </div>
               <div className='mb-8 ml-8 flex flex-col items-start gap-2 px-4'>
                 <Menu.Item>
-                  <Button
-                    variant={'primary'}
-                    href={'/auth'}>
+                  <Button variant={'primary'} href={'/auth'}>
                     Авторизация
                   </Button>
                 </Menu.Item>
               </div>
+              {isAuthenticated ? (
+                <div className='mb-8 ml-8 flex gap-2 px-4'>
+                  <Menu.Item>
+                    <Link href={'/'} className='hover:text-drPurple'>
+                      <div className='flex w-full items-center gap-2'>
+                        <div className='w-full'>
+                          <Image
+                            width={1000}
+                            height={1000}
+                            src={'/male.png'}
+                            alt={'user photo'}
+                            className='h-10 w-10 overflow-hidden rounded-md'
+                          />
+                        </div>
+                        <div className='flex w-full flex-col items-start'>
+                          <h1 className='text-sm'>{userData?.email}</h1>
+                          {userData?.roles.map(role => (
+                            <span key={role.id} className='text-xs'>
+                              {role.name}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </Link>
+                  </Menu.Item>
+                </div>
+              ) : null}
             </Menu.Items>
           </Transition>
         </Menu>

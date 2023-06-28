@@ -31,7 +31,7 @@ export const DepartmentHistorySection = () => {
             </div>
             <div className='flex w-full flex-1 items-center justify-end gap-4'>
               <Image
-                className='mb-6 h-72 rounded-md object-fill object-center shadow-xl sm:mb-0 sm:h-[400px]'
+                className='mb-6 h-72 w-auto rounded-md object-fill object-center shadow-xl sm:mb-0 sm:h-[400px]'
                 width={1400}
                 height={1400}
                 src='/kafedra.jpg'
@@ -63,7 +63,7 @@ export const DepartmentHistorySection = () => {
             </div>
             <div className='flex w-full flex-1 items-center justify-start'>
               <Image
-                className='mb-6 h-80 w-80 rounded-md object-fill object-center shadow-xl sm:mb-0'
+                className='mb-6 h-80 w-auto rounded-md object-fill object-center shadow-xl sm:mb-0'
                 width={1400}
                 height={1400}
                 src='/gabdullin.png'

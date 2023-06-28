@@ -8,8 +8,12 @@ import { LinkList } from '@/components/base/link-list/LinkList'
 import { unauthLinksData } from '@/components/base/link-list/data/links.data'
 import { MobileMenu } from '@/components/base/mobile-menu/MobileMenu'
 import { ExtendLinksData } from '@/components/data/ExtendLinks'
+import { UserMenu } from '@/components/base/user-menu/UserMenu'
+import { useAuthStore } from '@/store/auth'
 
 export const BaseNavigationBar = () => {
+  const userData = useAuthStore(state => state.userData)
+
   return (
     <nav className='flex w-full items-center justify-between px-4 py-3 shadow-md'>
       <Logo
@@ -19,17 +23,18 @@ export const BaseNavigationBar = () => {
         iconWidth={40}
       />
       <LinkList data={unauthLinksData} />
-      <Group>
-        <ThemeSwitch
-          iconWidth={30}
-          iconHeight={30}
-        />
 
-        <Button
-          variant={'primary'}
-          href={'/auth'}>
-          Авторизация
-        </Button>
+      <Group>
+        <ThemeSwitch iconWidth={30} iconHeight={30} />
+        {userData ? (
+          <>
+            <UserMenu data={userData} iconSize={20} />
+          </>
+        ) : (
+          <Button variant={'primary'} href={'/auth'}>
+            Авторизация
+          </Button>
+        )}
       </Group>
       <MobileMenu
         iconSize={30}

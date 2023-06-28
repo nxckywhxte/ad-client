@@ -10,6 +10,7 @@ export const HeroSection = () => {
             src='/office party-6010.svg'
             width={800}
             height={800}
+            priority
             alt='Hero img'
           />
         </div>
@@ -22,29 +23,21 @@ export const HeroSection = () => {
           </h1>
           <div className='my-4 flex flex-col items-center py-5 text-center font-light md:text-lg lg:text-xl'>
             <span>
-              Присоединяйтесь к нашей большой
-              семье, заводите новые знакомства и
+              Присоединяйтесь к нашей большой семье, заводите новые знакомства и
               друзей.
             </span>
+            <span>Получайте максимум новых знаний и оттачивайте навыки.</span>
             <span>
-              Получайте максимум новых знаний и
-              оттачивайте навыки.
-            </span>
-            <span>
-              Изучайте новые технологии в сфере
-              Автоматизации технолонических
-              процессов и производства вместе с
-              нами!
+              Изучайте новые технологии в сфере Автоматизации технолонических
+              процессов и производства вместе с нами!
             </span>
           </div>
           <div className='mt-4 flex flex-col items-center gap-4 text-lg text-drForeground md:flex-row'>
-            <Link
-              href='/auth'
-              className='rounded-md bg-drComment px-4 py-3'>
+            <Link href={'/auth'} className='rounded-md bg-drComment px-4 py-3'>
               Присоединиться
             </Link>
             <Link
-              href='/auth'
+              href={'/auth'}
               className='rounded-md bg-drCurrentLine px-4 py-3'>
               Свзяь с аднимистрацией
             </Link>

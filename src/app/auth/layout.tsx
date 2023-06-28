@@ -10,10 +10,8 @@ interface AuthRootLayoutProps {
   children?: ReactNode
 }
 
-const AuthRootLayout: FC<AuthRootLayoutProps> = ({
-  children,
-}) => {
-  return <>{children}</>
+const AuthRootLayout: FC<AuthRootLayoutProps> = ({ children }) => {
+  return <div suppressHydrationWarning>{children}</div>
 }
 
 export default AuthRootLayout

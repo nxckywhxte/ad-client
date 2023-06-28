@@ -9,7 +9,7 @@ export const TeacherCard: FC<
     <div className='rounded-md border p-4 shadow-xl dark:border-drCurrentLine md:w-1/2 xl:w-1/4'>
       <div className='rounded-md p-2 md:p-3 lg:p-4'>
         <Image
-          className='mb-6 h-80 rounded-md object-fill object-center'
+          className='mb-6 h-30 w-auto rounded-md object-fill object-center'
           width={400}
           height={400}
           src={imageUrl}

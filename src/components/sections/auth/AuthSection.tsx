@@ -6,16 +6,16 @@ export const AuthSection = () => {
     <section className='mt-10 flex min-h-screen w-full flex-col items-center justify-center'>
       <div className='mb-6 flex w-full flex-col items-center justify-center px-4 lg:mb-0'>
         <h1 className='title-font mb-6 text-center text-3xl font-medium uppercase sm:text-4xl lg:w-2/4'>
-          Добро пожаловать на официальный сайт
-          кафедры Автоматизации и ИТ, друг
+          Добро пожаловать на{' '}
+          <span className='text-drPurple'>официальный сайт</span> кафедры
+          Автоматизации и ИТ
         </h1>
         <div className='h-1 w-72 rounded bg-drPurple'></div>
         <span className='mt-10 text-center text-xl sm:text-2xl'>
-          Для продолжения, авторизуйтесь или
-          зарегистрируйтесь
+          Для продолжения, авторизуйтесь или зарегистрируйтесь
         </span>
       </div>
-      <div className='flex w-full flex-1 flex-col items-center justify-center lg:flex-row'>
+      <div className='flex w-full flex-1 flex-col items-center md:justify-center lg:flex-row'>
         <div className='hidden flex-1 lg:flex'>
           <Image
             priority={true}
