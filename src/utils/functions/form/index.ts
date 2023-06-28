@@ -11,6 +11,7 @@ export const registerOnSubmit = async (
   setFormType?: Dispatch<SetStateAction<number>>
 ) => {
   const newFormData = new FormData()
+  if (data.avatarFile === undefined) return
   newFormData.append('avatarFile', data.avatarFile[0])
   newFormData.append(
     'createUser',

@@ -17,7 +17,7 @@ export interface IProfileStepAuthForm {
   gender: Gender
   phoneNumber: string
   birthday: Date
-  avatarFile: FileList
+  avatarFile: FileList | undefined
 }
 
 export interface IRegisterStepAuthForm extends ILoginStepAuthForm {
