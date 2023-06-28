@@ -5,6 +5,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { UserResponse } from '@/types/form'
 import { removeOnSubmit } from '@/utils/functions/form'
+import { API_IMAGES_URL } from '@/utils/constants'
 
 type AdminUserModalProps = {
   user: UserResponse
@@ -43,7 +44,7 @@ export const AdminUserModal: FC<AdminUserModalProps> = ({ user, token }) => {
             <div className='h-20 w-20 overflow-hidden rounded-full'>
               <Image
                 className='h-20 w-20 overflow-hidden rounded-full object-cover'
-                src={`http://localhost:1010/api/v1/users/get-icon/${user.id}.jpg`}
+                src={`${API_IMAGES_URL}/${user.id}.jpg`}
                 width={300}
                 height={300}
                 alt={'user photo'}
